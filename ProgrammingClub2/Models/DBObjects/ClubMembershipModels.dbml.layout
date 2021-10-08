@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ClubMembershipModels">
+  <DataContextMoniker Name="/ClubMembershipModelsDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c6df6e61-ca4b-4a90-80ec-ffbccaa9592f" absoluteBounds="7.375, 1, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/ClubMembershipModelsDataContext/Announcement" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fd22d355-b63d-475b-9dbb-6876062d3d2b" absoluteBounds="7.39, 1.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="562eb4b2-3b9a-4bbd-a827-9910fd5c98bc" absoluteBounds="0.5, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/ClubMembershipModelsDataContext/CodeSnippet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="442cbc1e-5b80-4b0b-a0b1-63fa751b5f0e" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a0950675-1a45-417e-829f-4e8a102c35dd" absoluteBounds="4, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/ClubMembershipModelsDataContext/Member" />
+      <nestedChildShapes>
+        <elementListCompartment Id="df49d50e-99bb-4b98-8262-8c02d0dbda07" absoluteBounds="4.015, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4 : 1.38544840494792); (2.5 : 1.38544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ClubMembershipModelsDataContext/Member/Member_CodeSnippet" />
+      <nodes>
+        <classShapeMoniker Id="a0950675-1a45-417e-829f-4e8a102c35dd" />
+        <classShapeMoniker Id="562eb4b2-3b9a-4bbd-a827-9910fd5c98bc" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="fe2fbb86-36c0-40d0-a99d-f5c7bdb3493a" absoluteBounds="2.25, 2.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/ClubMembershipModelsDataContext/Membership" />
+      <nestedChildShapes>
+        <elementListCompartment Id="30f557f7-49c1-4edb-9a37-95b86ba84999" absoluteBounds="2.265, 3.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4 : 1.95557532356771); (3.25 : 1.95557532356771); (3.25 : 2.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ClubMembershipModelsDataContext/Member/Member_Membership" />
+      <nodes>
+        <classShapeMoniker Id="a0950675-1a45-417e-829f-4e8a102c35dd" />
+        <classShapeMoniker Id="fe2fbb86-36c0-40d0-a99d-f5c7bdb3493a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="293320d8-494b-4e7e-8e4d-33043da62004" absoluteBounds="4.75, 2.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ClubMembershipModelsDataContext/MembershipType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c451e883-0a1a-4c67-b5c0-f3b271406ad6" absoluteBounds="4.765, 3.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.45242346379207 : 4.45359537760417); (5.45242346379207 : 4.70359537760417); (6.06174684745593 : 4.70359537760417); (6.06174684745593 : 4.45359537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ClubMembershipModelsDataContext/MembershipType/MembershipType_MembershipType" />
+      <nodes>
+        <classShapeMoniker Id="293320d8-494b-4e7e-8e4d-33043da62004" />
+        <classShapeMoniker Id="293320d8-494b-4e7e-8e4d-33043da62004" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
