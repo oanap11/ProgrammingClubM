@@ -66,7 +66,7 @@ namespace ProgrammingClub2.Controllers
             return View();
         }
 
-        //
+        //added a comment
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
