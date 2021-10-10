@@ -185,6 +185,8 @@
     <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\MembershipTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,6 +207,8 @@
     <Compile Include="Repositories\announcement.cs" />
     <Compile Include="Repositories\announcementmodel.cs" />
     <Compile Include="Repositories\AnnouncementRepository.cs" />
+    <Compile Include="Repositories\MemberRepository.cs" />
+    <Compile Include="Repositories\MembershipTypeRepository.cs" />
     <Compile Include="Repositories\notimplementedexception.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -278,8 +282,17 @@
     <Content Include="Views\Announcements\EditAnnouncement.cshtml" />
     <Content Include="Views\Announcements\Details.cshtml" />
     <Content Include="Views\Announcements\Delete.cshtml" />
+    <Content Include="Views\Member\CreateMember.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
+    <Content Include="Views\Member\EditMember.cshtml" />
+    <Content Include="Views\Member\Delete.cshtml" />
+    <Content Include="Views\Member\MemberDetails.cshtml" />
+    <Content Include="Views\MembershipType\CreateMembershipType.cshtml" />
+    <Content Include="Views\MembershipType\Index.cshtml" />
+    <Content Include="Views\MembershipType\EditMembershipModel.cshtml" />
+    <Content Include="Views\MembershipType\DeleteMembershipType.cshtml" />
+    <Content Include="Views\MembershipType\DetailsMembershipType.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -301,6 +314,7 @@
       <DependentUpon>ClubMembershipModels.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

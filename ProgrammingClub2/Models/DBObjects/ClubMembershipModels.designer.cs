@@ -781,6 +781,8 @@ namespace ProgrammingClub2.Models.DBObjects
 		
 		private EntityRef<Member> _Member;
 		
+		private EntityRef<MembershipType> _MembershipType;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -802,6 +804,7 @@ namespace ProgrammingClub2.Models.DBObjects
 		public Membership()
 		{
 			this._Member = default(EntityRef<Member>);
+			this._MembershipType = default(EntityRef<MembershipType>);
 			OnCreated();
 		}
 		
@@ -860,6 +863,10 @@ namespace ProgrammingClub2.Models.DBObjects
 			{
 				if ((this._IDMembershipType != value))
 				{
+					if (this._MembershipType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnIDMembershipTypeChanging(value);
 					this.SendPropertyChanging();
 					this._IDMembershipType = value;
@@ -963,6 +970,40 @@ namespace ProgrammingClub2.Models.DBObjects
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MembershipType_Membership", Storage="_MembershipType", ThisKey="IDMembershipType", OtherKey="IDMembershipType", IsForeignKey=true)]
+		public MembershipType MembershipType
+		{
+			get
+			{
+				return this._MembershipType.Entity;
+			}
+			set
+			{
+				MembershipType previousValue = this._MembershipType.Entity;
+				if (((previousValue != value) 
+							|| (this._MembershipType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MembershipType.Entity = null;
+						previousValue.Memberships.Remove(this);
+					}
+					this._MembershipType.Entity = value;
+					if ((value != null))
+					{
+						value.Memberships.Add(this);
+						this._IDMembershipType = value.IDMembershipType;
+					}
+					else
+					{
+						this._IDMembershipType = default(System.Guid);
+					}
+					this.SendPropertyChanged("MembershipType");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -998,9 +1039,7 @@ namespace ProgrammingClub2.Models.DBObjects
 		
 		private int _SubscriptionLengthMonths;
 		
-		private EntityRef<MembershipType> _MembershipType2;
-		
-		private EntityRef<MembershipType> _MembershipType1;
+		private EntitySet<Membership> _Memberships;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1018,8 +1057,7 @@ namespace ProgrammingClub2.Models.DBObjects
 		
 		public MembershipType()
 		{
-			this._MembershipType2 = default(EntityRef<MembershipType>);
-			this._MembershipType1 = default(EntityRef<MembershipType>);
+			this._Memberships = new EntitySet<Membership>(new Action<Membership>(this.attach_Memberships), new Action<Membership>(this.detach_Memberships));
 			OnCreated();
 		}
 		
@@ -1034,10 +1072,6 @@ namespace ProgrammingClub2.Models.DBObjects
 			{
 				if ((this._IDMembershipType != value))
 				{
-					if (this._MembershipType1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnIDMembershipTypeChanging(value);
 					this.SendPropertyChanging();
 					this._IDMembershipType = value;
@@ -1107,70 +1141,22 @@ namespace ProgrammingClub2.Models.DBObjects
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MembershipType_MembershipType", Storage="_MembershipType2", ThisKey="IDMembershipType", OtherKey="IDMembershipType", IsUnique=true, IsForeignKey=false)]
-		public MembershipType MembershipType2
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MembershipType_Membership", Storage="_Memberships", ThisKey="IDMembershipType", OtherKey="IDMembershipType")]
+		public EntitySet<Membership> Memberships
 		{
 			get
 			{
-				return this._MembershipType2.Entity;
+				return this._Memberships;
 			}
 			set
 			{
-				MembershipType previousValue = this._MembershipType2.Entity;
-				if (((previousValue != value) 
-							|| (this._MembershipType2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MembershipType2.Entity = null;
-						previousValue.MembershipType1 = null;
-					}
-					this._MembershipType2.Entity = value;
-					if ((value != null))
-					{
-						value.MembershipType1 = this;
-					}
-					this.SendPropertyChanged("MembershipType2");
-				}
+				this._Memberships.Assign(value);
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MembershipType_MembershipType", Storage="_MembershipType1", ThisKey="IDMembershipType", OtherKey="IDMembershipType", IsForeignKey=true)]
-		public MembershipType MembershipType1
-		{
-			get
-			{
-				return this._MembershipType1.Entity;
-			}
-			set
-			{
-				MembershipType previousValue = this._MembershipType1.Entity;
-				if (((previousValue != value) 
-							|| (this._MembershipType1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MembershipType1.Entity = null;
-						previousValue.MembershipType2 = null;
-					}
-					this._MembershipType1.Entity = value;
-					if ((value != null))
-					{
-						value.MembershipType2 = this;
-						this._IDMembershipType = value.IDMembershipType;
-					}
-					else
-					{
-						this._IDMembershipType = default(System.Guid);
-					}
-					this.SendPropertyChanged("MembershipType1");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
+
+        public int SubscriptionLengthInMonths { get; internal set; }
+
+        public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
 		
@@ -1188,6 +1174,18 @@ namespace ProgrammingClub2.Models.DBObjects
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Memberships(Membership entity)
+		{
+			this.SendPropertyChanging();
+			entity.MembershipType = this;
+		}
+		
+		private void detach_Memberships(Membership entity)
+		{
+			this.SendPropertyChanging();
+			entity.MembershipType = null;
 		}
 	}
 }

@@ -42,6 +42,7 @@
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Member_Membership" Member="Member" ThisKey="IDMember" OtherKey="IDMember" Type="Member" IsForeignKey="true" />
+      <Association Name="MembershipType_Membership" Member="MembershipType" ThisKey="IDMembershipType" OtherKey="IDMembershipType" Type="MembershipType" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MembershipTypes" Member="MembershipTypes">
@@ -50,8 +51,7 @@
       <Column Name="Name" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="SubscriptionLengthMonths" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="MembershipType_MembershipType" Member="MembershipType2" ThisKey="IDMembershipType" OtherKey="IDMembershipType" Type="MembershipType" Cardinality="One" />
-      <Association Name="MembershipType_MembershipType" Member="MembershipType1" ThisKey="IDMembershipType" OtherKey="IDMembershipType" Type="MembershipType" IsForeignKey="true" />
+      <Association Name="MembershipType_Membership" Member="Memberships" ThisKey="IDMembershipType" OtherKey="IDMembershipType" Type="Membership" />
     </Type>
   </Table>
 </Database>
