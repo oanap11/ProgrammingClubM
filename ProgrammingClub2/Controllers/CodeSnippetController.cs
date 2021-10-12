@@ -20,9 +20,10 @@ namespace ProgrammingClub2.Controllers
         }
 
         // GET: CodeSnippet/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+            CodeSnippetModel codeSnippetModel = codeSnippetRepository.GetById(id);
+            return View("DetailsCodeSnippet", codeSnippetModel);
         }
 
         // GET: CodeSnippet/Create
@@ -50,46 +51,48 @@ namespace ProgrammingClub2.Controllers
         }
 
         // GET: CodeSnippet/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-            return View();
+            CodeSnippetModel codeSnippetModel = codeSnippetRepository.GetById(id);
+            return View("EditCodeSnippet", codeSnippetModel);
         }
 
         // POST: CodeSnippet/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Guid id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
-
+                CodeSnippetModel codeSnippetModel = new CodeSnippetModel();
+                UpdateModel(codeSnippetModel);
+                codeSnippetRepository.UpdateCodeSnippet(codeSnippetModel);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("EditCodeSnippet");
             }
         }
 
         // GET: CodeSnippet/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+            CodeSnippetModel codeSnippetModel = codeSnippetRepository.GetById(id);
+            return View("DeleteCodeSnippet", codeSnippetModel);
         }
 
         // POST: CodeSnippet/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Guid id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                codeSnippetRepository.Delete(id);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("DeleteCodeSnippet");
             }
         }
     }

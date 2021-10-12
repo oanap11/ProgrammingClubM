@@ -14,6 +14,6 @@ namespace ProgrammingClub2.Models
         [Required(ErrorMessage = "Mandatory field")]
         public string Description { get; set; }
         [Required(ErrorMessage = "Mandatory field")]
-        public int SubscriptionLengthInMonths { get; set; }
+        public int SubscriptionLengthMonths { get; set; }
     }
 }

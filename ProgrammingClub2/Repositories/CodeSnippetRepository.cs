@@ -80,6 +80,11 @@ namespace ProgrammingClub2.Repositories
             dbContext.SubmitChanges();
         }
 
+        internal void DeleteCodeSnippet(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateCodeSnippet(CodeSnippetModel codeSnippetModel)
         {
             CodeSnippet codeSnippet = dbContext.CodeSnippets.

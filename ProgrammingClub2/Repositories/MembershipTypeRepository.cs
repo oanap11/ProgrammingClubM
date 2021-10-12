@@ -52,7 +52,7 @@ namespace ProgrammingClub2.Repositories
                 existingMembershipType.IDMembershipType = membershipTypeModel.IDMembershipType;
                 existingMembershipType.Name = membershipTypeModel.Name;
                 existingMembershipType.Description = membershipTypeModel.Description;
-                existingMembershipType.SubscriptionLengthInMonths = membershipTypeModel.SubscriptionLengthInMonths;
+                existingMembershipType.SubscriptionLengthMonths = membershipTypeModel.SubscriptionLengthMonths;
 
                 dbContext.SubmitChanges();
             }
@@ -77,7 +77,7 @@ namespace ProgrammingClub2.Repositories
                 membershipTypeModel.IDMembershipType = membershipType.IDMembershipType;
                 membershipTypeModel.Name = membershipType.Name;
                 membershipTypeModel.Description = membershipType.Description;
-                membershipTypeModel.SubscriptionLengthInMonths = membershipType.SubscriptionLengthInMonths;
+                membershipTypeModel.SubscriptionLengthMonths = membershipType.SubscriptionLengthMonths;
 
                 return membershipTypeModel;
             }
@@ -92,7 +92,7 @@ namespace ProgrammingClub2.Repositories
                 dbMembershipType.IDMembershipType = membershipTypeModel.IDMembershipType;
                 dbMembershipType.Name = membershipTypeModel.Name;
                 dbMembershipType.Description = membershipTypeModel.Description;
-                dbMembershipType.SubscriptionLengthInMonths = membershipTypeModel.SubscriptionLengthInMonths;
+                dbMembershipType.SubscriptionLengthMonths = membershipTypeModel.SubscriptionLengthMonths;
 
                 return dbMembershipType;
             }

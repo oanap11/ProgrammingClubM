@@ -1154,7 +1154,7 @@ namespace ProgrammingClub2.Models.DBObjects
 			}
 		}
 
-        public int SubscriptionLengthInMonths { get; internal set; }
+        
 
         public event PropertyChangingEventHandler PropertyChanging;
 		
