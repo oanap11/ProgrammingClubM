@@ -9,8 +9,9 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #FFAFC1;">
-        <div class="container">
+    <div class="container">
+        <div class="navbar navbar-inverse" style="background-color: #64485C;">
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -19,12 +20,12 @@
                 </button>
                 @Html.ActionLink("Programming Club", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse" >
+            <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Announcements", "Index", "Announcements")</li>
                     <li>@Html.ActionLink("Members", "Index", "Member")</li>
-                    <li>@Html.ActionLink("Membership Type", "Index", "MembershipType")</li>
+                    <li>@Html.ActionLink("Membership Types", "Index", "MembershipType")</li>
+                    <li>@Html.ActionLink("Code Snippets", "Index", "CodeSnippet")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -35,7 +36,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - ASP.NET Application - ITerra Project</p>
         </footer>
     </div>
 

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ProgrammingClub2.Controllers
 {
+    [Authorize(Roles = "Admin, User, Visitor")]
     public class MembershipTypeController : Controller
     {
         private MembershipTypeRepository membershipTypeRepository = new MembershipTypeRepository();
