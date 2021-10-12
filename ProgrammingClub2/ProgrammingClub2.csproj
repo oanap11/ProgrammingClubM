@@ -183,6 +183,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnnouncementsController.cs" />
+    <Compile Include="Controllers\CodeSnippetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
@@ -203,10 +204,12 @@
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Models\MembershipModel.cs" />
     <Compile Include="Models\MembershipTypeModel.cs" />
+    <Compile Include="Models\ViewModels\MemberCodeSnippetViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\announcement.cs" />
     <Compile Include="Repositories\announcementmodel.cs" />
     <Compile Include="Repositories\AnnouncementRepository.cs" />
+    <Compile Include="Repositories\CodeSnippetRepository.cs" />
     <Compile Include="Repositories\MemberRepository.cs" />
     <Compile Include="Repositories\MembershipTypeRepository.cs" />
     <Compile Include="Repositories\notimplementedexception.cs" />
@@ -292,6 +295,9 @@
     <Content Include="Views\MembershipType\EditMembershipModel.cshtml" />
     <Content Include="Views\MembershipType\DeleteMembershipType.cshtml" />
     <Content Include="Views\MembershipType\DetailsMembershipType.cshtml" />
+    <Content Include="Views\CodeSnippet\Index.cshtml" />
+    <Content Include="Views\CodeSnippet\Create.cshtml" />
+    <Content Include="Views\Member\DetailsViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
